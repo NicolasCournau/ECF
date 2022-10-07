@@ -17,13 +17,20 @@ class Permission
     private ?string $name = null;
 
     #[ORM\Column]
-    private ?int $instal_id = null;
+    private ?int $install = null;
 
     #[ORM\Column]
     private ?int $user_id = null;
 
     #[ORM\Column(length: 255)]
     private ?string $description = null;
+
+    #[ORM\ManyToOne(inversedBy: 'permissions')]
+    private ?User $User = null;
+
+    #[ORM\ManyToOne(inversedBy: 'permissions')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?EquipeTechnique $equipeTechnique = null;
 
     public function getId(): ?int
     {
@@ -42,14 +49,14 @@ class Permission
         return $this;
     }
 
-    public function getInstalId(): ?int
+    public function getInstall(): ?int
     {
-        return $this->instal_id;
+        return $this->install;
     }
 
-    public function setInstalId(int $instal_id): self
+    public function setInstall(int $install): self
     {
-        $this->instal_id = $instal_id;
+        $this->install = $install;
 
         return $this;
     }
@@ -74,6 +81,30 @@ class Permission
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->User;
+    }
+
+    public function setUser(?User $User): self
+    {
+        $this->User = $User;
+
+        return $this;
+    }
+
+    public function getEquipeTechnique(): ?EquipeTechnique
+    {
+        return $this->equipeTechnique;
+    }
+
+    public function setEquipeTechnique(?EquipeTechnique $equipeTechnique): self
+    {
+        $this->equipeTechnique = $equipeTechnique;
 
         return $this;
     }

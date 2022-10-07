@@ -1,3 +1,11 @@
 controllers:
-    resource: ../src/Controller/
-    type: attribute
+  resource: ../src/Controller/
+  type: attribute
+
+home:
+  path: /admin/home
+  controller: App\Controller\admin\AdminControllerHomeController::home
+
+app_admin:
+  path: /admin/utilisateurs
+  controller: app\Controller\admin\AdminController::editUser

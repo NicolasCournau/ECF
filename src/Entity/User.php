@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -33,20 +35,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $adress = null;
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    private ?Structure $structure = null;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $description = null;
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    private ?EquipeTechnique $equipeTechnique = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $active = null;
+    #[ORM\OneToMany(mappedBy: 'User', targetEntity: Permission::class)]
+    private Collection $permissions;
 
-    #[ORM\Column(length: 30)]
-    private ?string $city = null;
+    #[ORM\Column(nullable: true)]
+    private ?bool $active = null;
 
-    #[ORM\Column(length: 5)]
-    private ?string $zipcode = null;
+    public function __construct()
+    {
+        $this->permissions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -61,6 +65,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function isActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): self
+    {
+        $this->active = $active;
 
         return $this;
     }
@@ -130,62 +146,56 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAdress(): ?string
+    public function getStructure(): ?Structure
     {
-        return $this->adress;
+        return $this->structure;
     }
 
-    public function setAdress(string $adress): self
+    public function setStructure(?Structure $structure): self
     {
-        $this->adress = $adress;
+        $this->structure = $structure;
 
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getEquipeTechnique(): ?EquipeTechnique
     {
-        return $this->description;
+        return $this->equipeTechnique;
     }
 
-    public function setDescription(?string $description): self
+    public function setEquipeTechnique(?EquipeTechnique $equipeTechnique): self
     {
-        $this->description = $description;
+        $this->equipeTechnique = $equipeTechnique;
 
         return $this;
     }
 
-    public function getActive(): ?string
+    /**
+     * @return Collection<int, Permission>
+     */
+    public function getPermissions(): Collection
     {
-        return $this->active;
+        return $this->permissions;
     }
 
-    public function setActive(string $active): self
+    public function addPermission(Permission $permission): self
     {
-        $this->active = $active;
+        if (!$this->permissions->contains($permission)) {
+            $this->permissions->add($permission);
+            $permission->setUser($this);
+        }
 
         return $this;
     }
 
-    public function getCity(): ?string
+    public function removePermission(Permission $permission): self
     {
-        return $this->city;
-    }
-
-    public function setCity(string $city): self
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    public function getZipcode(): ?string
-    {
-        return $this->zipcode;
-    }
-
-    public function setZipcode(string $zipcode): self
-    {
-        $this->zipcode = $zipcode;
+        if ($this->permissions->removeElement($permission)) {
+            // set the owning side to null (unless already changed)
+            if ($permission->getUser() === $this) {
+                $permission->setUser(null);
+            }
+        }
 
         return $this;
     }

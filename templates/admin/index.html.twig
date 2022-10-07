@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des franchisés
+{% endblock %}
+
+{% block body %}
+	<h1>Liste des franchisés</h1>
+	<table>
+		<thead>
+			<th>ID</th>
+			<th>Nom</th>
+			<th>Email</th>
+			<th>Structure</th>
+			<th>Permissions actives</th>
+		</thead>
+		<tbody>
+			{% for user in user %}
+				<tr>
+					<td>{{ user.id }}</td>
+					<td>{{ user.name }}</td>
+					<td>{{ user.email }}</td>
+					<td>{{ user.structure }}</td>
+					<td>{{ user.active }}</td>
+
+					<td>
+						<a href="{{ path('admin_modifier_utilisateur', {'id': user.id}) }}">Modifier</a>
+					</td>
+				</tr>
+
+			{% else %}
+				<p>Aucun utilisateur inscrit</p>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

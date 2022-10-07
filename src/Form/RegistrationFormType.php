@@ -2,9 +2,13 @@
 
 namespace App\Form;
 
+use App\Entity\Structure;
 use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -23,16 +27,18 @@ class RegistrationFormType extends AbstractType
                 'label' => 'E-mail'
             ])
             ->add('name', TextType::class, [
-                'label' => 'Nom'
+                'label' => 'Nom du franchisé'
             ])
-            ->add('adress', TextType::class, [
-                'label' => 'Adresse'
-            ])
-            ->add('city', TextType::class, [
-                'label' => 'Ville'
-            ])
-            ->add('zipcode', TextType::class, [
-                'label' => 'Code postal'
+            ->add('structure', ChoiceType::class, [
+                'choices' => [
+                    '1' => null,
+                    '2' => null,
+                ],
+                'label' => 'Identifiant de la structure'
+                //('structure'), CollectionType::class, [
+                //'entry_type' => StructureFormType::class,
+                //'allow_add' => true,
+                //'by_reference' => false,
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
@@ -41,7 +47,7 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Vous n\'avez pas accepté les termes du contrat.',
                     ]),
                 ],
-                'label' => 'J\'accepte les termes du contrat'
+                'label' => 'Le franchisé a accepté les termes du contrat'
             ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,

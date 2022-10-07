@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page admin
+{% endblock %}
+
+{% block body %}
+	<p>Page admin</p>
+
+	<a href="{{ path('app_admin') }}">
+		<button type="submit" class="btn btn-primary">Voir/Modifier les structures</button>
+	</a>
+{% endblock %}

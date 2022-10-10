@@ -10,8 +10,8 @@
 			<th>ID</th>
 			<th>Nom</th>
 			<th>Email</th>
-			<th>Structure</th>
-			<th>Permissions actives</th>
+			<th>Identifiant de la structure</th>
+			<th>Permissions activée</th>
 		</thead>
 		<tbody>
 			{% for user in user %}
@@ -20,7 +20,13 @@
 					<td>{{ user.name }}</td>
 					<td>{{ user.email }}</td>
 					<td>{{ user.structure }}</td>
-					<td>{{ user.active }}</td>
+					{# <td>{{ user.active }}</td> #}
+
+					{% if user.active == '1' %}
+						<td>oui</td>
+					{% else %}
+						<td>non</td>
+					{% endif %}
 
 					<td>
 						<a href="{{ path('admin_modifier_utilisateur', {'id': user.id}) }}">Modifier</a>

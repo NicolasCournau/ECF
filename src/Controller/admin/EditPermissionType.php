@@ -2,7 +2,7 @@
 
 namespace App\Controller\admin;
 
-use App\Entity\User;
+use App\Entity\Permission;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -14,24 +14,25 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class EditUserType extends AbstractType
+
+class EditPermissionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
 
-            ->add('email', EmailType::class, [
-                'label' => 'E-mail'
-            ])
             ->add('name', TextType::class, [
                 'label' => 'Nom'
             ])
-            ->add('active', ChoiceType::class, [
+            ->add('install', ChoiceType::class, [
                 'choices'  => [
                     'non' => 0,
                     'oui' => 1,
                 ],
-                'label' => 'Actif',
+                'label' => 'Installée',
+            ])
+            ->add('description', TextType::class, [
+                'label' => 'Description'
             ])
             ->add('valider', SubmitType::class);
     }
@@ -40,7 +41,7 @@ class EditUserType extends AbstractType
     {
         $resolver->setDefaults([
             // Configure your form options here
-            'data_class' => User::class,
+            'data_class' => Permission::class,
         ]);
     }
 }

@@ -44,7 +44,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'User', targetEntity: Permission::class)]
     private Collection $permissions;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column]
     private ?bool $active = null;
 
     public function __construct()

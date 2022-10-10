@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Permissions
+{% endblock %}
+
+{% block body %}
+	<h1>Liste des Permissions</h1>
+	<table>
+		<thead>
+			<th>ID</th>
+			<th>Nom</th>
+			<th>Description</th>
+			<th>installée</th>
+		</thead>
+		<tbody>
+			{% for permission in permission %}
+				<tr>
+					<td>{{ permission.id }}</td>
+					<td>{{ permission.name }}</td>
+					<td>{{ permission.description }}</td>
+					{# <td>{{ permission.install }}</td> #}
+
+					{% if permission.install == '1' %}
+						<td>oui</td>
+					{% else %}
+						<td>non</td>
+					{% endif %}
+
+					<td>
+						<a href="{{ path('admin_modifier_permission', {'id': permission.id}) }}">Modifier une permission</a>
+					</td>
+				</tr>
+
+			{% else %}
+				<p>Aucune permission inscrite</p>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

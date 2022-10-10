@@ -9,3 +9,7 @@ home:
 app_admin:
   path: /admin/utilisateurs
   controller: app\Controller\admin\AdminController::editUser
+
+app_admin_permission:
+  path: /admin/permission
+  controller: app\Controller\admin\AdminPermissionController::editPermission

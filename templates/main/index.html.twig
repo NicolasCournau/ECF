@@ -1,8 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!
+{% block title %}Liste des Permissions
 {% endblock %}
 
 {% block body %}
-	<p>hello how are you</p>
-{% endblock %}
+	{% if app.user %}
+		<h2>Liste des Permissions</h2>
+		<table>
+			<thead>
+				<th>Nom</th>
+				<th>Description</th>
+				<th>installée</th>
+			</thead>
+			<tbody>
+				{% for permission in permission %}
+					<tr>
+						<td>{{ permission.name }}</td>
+						<td>{{ permission.description }}</td>
+						{% if permission.install == '1' %}
+							<td>oui</td>
+						{% else %}
+							<td>non</td>
+						{% endif %}
+					</tr>
+				</div>
+			</tbody>
+		</tr>
+
+	{% else %}
+		<p>Aucune permission pour vos structures</p>
+	{% endfor %}
+</tbody></table>{% else %}<h1>Connectez-vous pour voir vos droits</h1>{% endif %}{% endblock %}

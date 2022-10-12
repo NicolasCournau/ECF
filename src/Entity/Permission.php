@@ -19,7 +19,7 @@ class Permission
     #[ORM\Column]
     private ?int $install = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $user_id = null;
 
     #[ORM\Column(length: 255)]
@@ -61,18 +61,6 @@ class Permission
         return $this;
     }
 
-    public function getUserId(): ?int
-    {
-        return $this->user_id;
-    }
-
-    public function setUserId(int $user_id): self
-    {
-        $this->user_id = $user_id;
-
-        return $this;
-    }
-
     public function getDescription(): ?string
     {
         return $this->description;
@@ -81,6 +69,17 @@ class Permission
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+    public function getUserId(): ?int
+    {
+        return $this->user_id;
+    }
+
+    public function setUserId(int $user_id): self
+    {
+        $this->user_id = $user_id;
 
         return $this;
     }

@@ -26,8 +26,8 @@ class EditPermissionType extends AbstractType
             ])
             ->add('install', ChoiceType::class, [
                 'choices'  => [
-                    'non' => 0,
                     'oui' => 1,
+                    'non' => 0,
                 ],
                 'label' => 'Installée',
             ])

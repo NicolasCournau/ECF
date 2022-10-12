@@ -19,6 +19,11 @@ class Structure
     #[ORM\Column(length: 255)]
     private ?string $adress = null;
 
+    public function __toString()
+    {
+        return $this->adress;
+    }
+
     #[ORM\Column(length: 255)]
     private ?string $city = null;
 

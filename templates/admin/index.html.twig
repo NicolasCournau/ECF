@@ -4,38 +4,46 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Liste des franchisés</h1>
-	<table>
-		<thead>
-			<th>ID</th>
-			<th>Nom</th>
-			<th>Email</th>
-			<th>Identifiant de la structure</th>
-			<th>Permissions activée</th>
-		</thead>
-		<tbody>
-			{% for user in user %}
-				<tr>
-					<td>{{ user.id }}</td>
-					<td>{{ user.name }}</td>
-					<td>{{ user.email }}</td>
-					<td>{{ user.structure }}</td>
-					{# <td>{{ user.active }}</td> #}
+	<main class="container">
+		<section class="row">
+			<div class="col-12">
+				<h1>Liste des franchisés</h1>
+			</div>
+			<table>
+				<thead>
+					<th>ID</th>
+					<th>Nom</th>
+					<th>Email</th>
+					<th>Adresse de la structure</th>
+					<th>Franchisé actif</th>
+				</thead>
+				<tbody>
+					{% for user in user %}
+						<tr>
+							<td>{{ user.id }}</td>
+							<td>{{ user.name }}</td>
+							<td>{{ user.email }}</td>
+							<td>{{ user.structure }}</td>
+							{# <td>{{ user.active }}</td> #}
 
-					{% if user.active == '1' %}
-						<td>oui</td>
+							{% if user.active == '1' %}
+								<td>oui</td>
+							{% else %}
+								<td>non</td>
+							{% endif %}
+							<td>
+								<a class="btn btn-primary" href="{{ path('admin_modifier_utilisateur', {'id': user.id}) }}">Modifier</a>
+							</td>
+							<td>
+								<a class="btn btn-primary" href="{{ path('admin_assigner_utilisateur', {'id': user.id}) }}">Assigner une permission</a>
+							</td>
+						</tr>
+
 					{% else %}
-						<td>non</td>
-					{% endif %}
-
-					<td>
-						<a href="{{ path('admin_modifier_utilisateur', {'id': user.id}) }}">Modifier</a>
-					</td>
-				</tr>
-
-			{% else %}
-				<p>Aucun utilisateur inscrit</p>
-			{% endfor %}
-		</tbody>
-	</table>
+						<h2>Aucun utilisateur inscrit</h2>
+					{% endfor %}
+				</tbody>
+			</table>
+		</section>
+	</main>
 {% endblock %}

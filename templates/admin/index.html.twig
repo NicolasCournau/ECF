@@ -4,14 +4,13 @@
 {% endblock %}
 
 {% block body %}
-	<main class="container">
+	<main class="container ">
 		<section class="row">
 			<div class="col-12">
 				<h1>Liste des franchisés</h1>
 			</div>
 			<table>
 				<thead>
-					<th>ID</th>
 					<th>Nom</th>
 					<th>Email</th>
 					<th>Adresse de la structure</th>
@@ -19,8 +18,7 @@
 				</thead>
 				<tbody>
 					{% for user in user %}
-						<tr>
-							<td>{{ user.id }}</td>
+						<tr class="categorie">
 							<td>{{ user.name }}</td>
 							<td>{{ user.email }}</td>
 							<td>{{ user.structure }}</td>
@@ -35,7 +33,7 @@
 								<a class="btn btn-primary" href="{{ path('admin_modifier_utilisateur', {'id': user.id}) }}">Modifier</a>
 							</td>
 							<td>
-								<a class="btn btn-primary" href="{{ path('admin_assigner_utilisateur', {'id': user.id}) }}">Assigner une permission</a>
+								{#<a class="btn btn-primary" href="{{ path('admin_assigner_utilisateur', {'id': user.id}) }}">Assigner une permission</a>#}
 							</td>
 						</tr>
 
@@ -43,7 +41,7 @@
 						<h2>Aucun utilisateur inscrit</h2>
 					{% endfor %}
 				</tbody>
-			</table>
-		</section>
-	</main>
-{% endblock %}
+			</div>
+		</tbody>
+	</table>
+</section></main>{% endblock %}

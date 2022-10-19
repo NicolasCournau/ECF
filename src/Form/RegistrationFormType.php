@@ -40,6 +40,13 @@ class RegistrationFormType extends AbstractType
                 //'allow_add' => true,
                 //'by_reference' => false,
             ])
+            ->add('active', ChoiceType::class, [
+                'choices' => [
+                    'oui' => 1,
+                    'non' => 0,
+                ],
+                'label' => 'Actif'
+            ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [

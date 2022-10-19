@@ -1,0 +1,73 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    text-decoration: none;
+}
+
+.para {
+    color: red;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+/* navbar */
+
+.navbar {
+    background-color: lightgreen;
+}
+
+.nav-logo {
+    width: 50%;
+    border-radius: 30%;
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+.input-control input {
+    font-family: 'Raleway', sans-serif;
+    outline: 0;
+    border: 0;
+}
+
+.input-control input::placeholder {
+    font-size: 13px;
+}
+
+/* fin navbar */
+
+.categorie:nth-child(odd) {
+    background: lightgreen;
+}
+
+
+
+
+.themeContainer {
+    top: 0;
+}
+
+.theme {
+    height: 30px;
+    width: 30px; /*border radius défini plus haut donc ce seront des ronds*/
+    cursor: pointer; /*indique que c'est cliquable*/
+}
+
+#dark { /*# sélectionne l'id dark du html*/
+    background: black;
+}
+
+#white {
+    background: white;
+}
+
+.darkTheme { /*ces class sont définis directement dans le js*/
+    background: black;
+    color: white;
+}
+
+.whiteTheme {
+    background: white;
+    color: black;
+}

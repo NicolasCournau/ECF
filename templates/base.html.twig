@@ -12,21 +12,25 @@
 		name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<!-- Feuilles de styles -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
 
-		<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-		{% block stylesheets %}
-			<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-		{% endblock %}
+		<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}"> {% block stylesheets %}{% endblock %}
+		<link
+		rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+
 
 		<!-- Fichiers JS -->
 
-		<script src="{{ asset('assets/js/bootstrap.bundle.js') }}" defer></script>
+		<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 		{% block javascripts %}{% endblock %}
-		<script src="{{ asset('assets/js/script.js') }}" defer></script>
+		<script src="{{ asset('assets/js/script.js') }}"></script>
 
 	</head>
 	<body>
+
 		{% include "_partials/_nav.html.twig" %}
 		{% block body %}{% endblock %}
 	</body>
-</html></body></html></body></html>
+</html>

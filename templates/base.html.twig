@@ -20,12 +20,13 @@
 		<link
 		rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
 
-
 		<!-- Fichiers JS -->
 
-		<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-		{% block javascripts %}{% endblock %}
-		<script src="{{ asset('assets/js/script.js') }}"></script>
+		{% block javascripts %}
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+			<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+			<script src="{{ asset('assets/js/script.js') }}"></script>
+		{% endblock %}
 
 	</head>
 	<body>

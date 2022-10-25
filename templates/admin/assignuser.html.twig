@@ -4,5 +4,12 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Assigner une permission à un utilisateur</h1>
-	{{ form(AssignUserForm) }}{% endblock %}
+	<main class="container mt-3">
+		<section class="row card">
+			<div class="col 12 pt-3 card-header">
+				<h1>Assigner une permission à un utilisateur</h1>
+				{{ form(AssignUserForm) }}
+				</div>
+			</section>
+		</main>
+	{% endblock %}

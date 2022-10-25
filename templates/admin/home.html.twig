@@ -4,14 +4,17 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container">
-		<p class="para">Bienvenue sur votre espace d'administration.</p>
-
-		<a href="{{ path('app_admin') }}">
-			<button type="submit" class="btn btn-primary">Voir/Modifier les structures</button>
-		</a>
-		<a href="{{ path('app_admin_permission') }}">
-			<button type="submit" class="btn btn-primary">Voir/Modifier les permissions</button>
-		</a>
-	</div>
+	<main class="container mt-4">
+		<h1>Bienvenue sur votre espace d'administration</h1>
+		<section class="mt-5">
+			<div>
+				<a href="{{ path('app_admin') }}">
+					<button type="submit" class="btn btn-success">Voir/Modifier les structures</button>
+				</a>
+				<a href="{{ path('app_admin_permission') }}">
+					<button type="submit" class="btn btn-success">Voir/Modifier les permissions</button>
+				</a>
+			</div>
+		</section>
+	</main>
 {% endblock %}

@@ -4,11 +4,11 @@
 {% endblock %}
 
 {% block body %}
-	<main class="container ">
-		<section class="row">
-			<div class="col-12">
+	<main class="container mt-3">
+		<section class="row card">
+			<div class="col 12 pt-3 card-header">
 				{% if app.user %}
-					<h2>Liste des Permissions</h2>
+					<h1 class="pt-3">Liste des Permissions</h1>
 					<table>
 						<thead>
 							<th>Nom</th>
@@ -17,13 +17,13 @@
 						</thead>
 						<tbody>
 							{% for permission in permission %}
-								<tr class="categorie">
-									<td>{{ permission.name }}</td>
-									<td>{{ permission.description }}</td>
+								<tr class="categorie pt-3">
+									<td class="border">{{ permission.name }}</td>
+									<td class="border">{{ permission.description }}</td>
 									{% if app.user and permission.install == '1' %}
-										<td>oui</td>
+										<td class="border">oui</td>
 									{% else %}
-										<td>non</td>
+										<td class="border">non</td>
 									{% endif %}
 								</tr>
 							</div>
@@ -37,5 +37,6 @@
 		</div>
 	</table>
 {% else %}
-	<h1>Connectez-vous pour voir vos droits</h1>
+	<h1 class="pt-3">Bienvenue sur le panneau d'administration de la franchise Happy Fit!
+		<br><br>Veuillez vous connecter pour voir vos droits</h1>
 {% endif %}</section></main>{% endblock %}

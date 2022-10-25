@@ -4,10 +4,10 @@
 {% endblock %}
 
 {% block body %}
-	<main class="container ">
-		<section class="row">
-			<div class="col-12">
-				<h1>Liste des franchisés</h1>
+	<main class="container mt-3">
+		<section class="row card">
+			<div class="col-12 card-header">
+				<h1 class="pt-3">Liste des franchisés</h1>
 			</div>
 			<table>
 				<thead>
@@ -18,10 +18,10 @@
 				</thead>
 				<tbody>
 					{% for user in user %}
-						<tr class="categorie">
-							<td>{{ user.name }}</td>
-							<td>{{ user.email }}</td>
-							<td>{{ user.structure }}</td>
+						<tr class="categorie pt-3">
+							<td class="border">{{ user.name }}</td>
+							<td class="border">{{ user.email }}</td>
+							<td class="border">{{ user.structure }}</td>
 							{# <td>{{ user.active }}</td> #}
 
 							{% if user.active == '1' %}
@@ -30,7 +30,7 @@
 								<td>non</td>
 							{% endif %}
 							<td>
-								<a class="btn btn-primary" href="{{ path('admin_modifier_utilisateur', {'id': user.id}) }}">Modifier</a>
+								<a class="btn btn-primary border" href="{{ path('admin_modifier_utilisateur', {'id': user.id}) }}">Modifier</a>
 							</td>
 							<td>
 								{#<a class="btn btn-primary" href="{{ path('admin_assigner_utilisateur', {'id': user.id}) }}">Assigner une permission</a>#}

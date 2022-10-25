@@ -12,6 +12,7 @@ class MainController extends AbstractController
     #[Route('/', name: 'main')]
     public function index(PermissionRepository $permission): Response
     {
+
         return $this->render('Main/index.html.twig', [
             'controller_name' => 'MainController',
             'permission' => $permission->findAll(),

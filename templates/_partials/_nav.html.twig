@@ -1,6 +1,6 @@
 <!-- navbar  -->
-<body>
-	<nav class="navbar navbar-expand-lg">
+<body id="theme">
+	<nav id="searchResult" class="navbar navbar-expand-lg">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="{{ path('main') }}"><img class="nav-logo" src="{{ asset('assets/images/logo.png') }}"></a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,13 +12,21 @@
 					<label for="search">
 						<img src="{{ asset('assets/images/search.svg') }}">
 					</label>
-					<input type="text" id="search" placeholder="Rechercher un franchisé">
+					<input type="text" autocomplete="off" id="search" placeholder="Rechercher un franchisé...">
 				</div>
+
 			</section>
 
-			<div class="themeContainer">
-				<div class="theme" id="dark"></div>
-				<div class="theme" id="white"></div>
+
+			<div class="navbar-collapse" id="navbarSupportedContent">
+				<div class="navbar-nav ms-auto mb-2 mb-lg-0">
+					<div>
+						<label class="switch">
+							<input type="checkbox" onclick="darkLight()" id="checkBox">
+							<span class="slider"></span>
+						</label>
+					</div>
+				</div>
 			</div>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -43,4 +51,4 @@
 		</div>
 	</nav>
 </body>
-<!-- fin navbar -->
+<!-- fin navbar --></body>

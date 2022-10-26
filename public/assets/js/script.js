@@ -23,7 +23,7 @@ if ($('main').hasClass('dark')) {
 }
 
 
-/* Searchbar autocomplete */
+/* Searchbar */
 
 $(document).ready(function(){
     $("#search").keyup(function(){
